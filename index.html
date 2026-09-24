@@ -31,6 +31,7 @@
     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
       <span class="track"><span class="thumb"></span></span>
     </button>
+    <span class="scroll-progress" id="scroll-progress" aria-hidden="true"></span>
   </nav>
 
   <div class="page" id="top">
@@ -276,6 +277,20 @@
         root.setAttribute('data-theme', next);
         try { localStorage.setItem('theme', next); } catch (e) {}
       });
+    })();
+
+    (function () {
+      var bar = document.getElementById('scroll-progress');
+      if (!bar) return;
+      function update() {
+        var doc = document.documentElement;
+        var scrollable = doc.scrollHeight - doc.clientHeight;
+        var pct = scrollable > 0 ? (doc.scrollTop / scrollable) * 100 : 0;
+        bar.style.width = pct + '%';
+      }
+      document.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
     })();
   </script>
 </body>

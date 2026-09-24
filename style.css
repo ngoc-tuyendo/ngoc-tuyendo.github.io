@@ -85,6 +85,15 @@ h1, h2, h3 {
   border-bottom: 1px solid var(--line);
 }
 
+.scroll-progress {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 2px;
+  width: 0%;
+  background: var(--navy-2);
+}
+
 .navbar .brand {
   font-family: "Source Serif 4", Georgia, serif;
   font-weight: 700;
